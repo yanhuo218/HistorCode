@@ -1,0 +1,7 @@
+server:
+  port: 80
+
+user:
+  id: 10
+  username: asd
+  password: aaa

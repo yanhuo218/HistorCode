@@ -1,0 +1,4 @@
+com\yanhuo\Application.class
+com\yanhuo\domain\User.class
+com\yanhuo\controller\UserController.class
+META-INF\spring-configuration-metadata.json

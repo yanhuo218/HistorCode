@@ -1,0 +1,3 @@
+com\yanhuo\dao\UserDao.class
+com\yanhuo\domain\User.class
+com\yanhuo\SpringBootMybatisApplication.class

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/71825aaf-421a-4bb9-9521-76b2263336c4/console.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/com/yanhuo/JDBC_one/JDBC_MySql.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/com/yanhuo1/mapper/Usermapper.xml" dialect="MySQL" />
+  </component>
+</project>

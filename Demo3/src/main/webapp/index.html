@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <link href="element-ui/lib/theme-chalk/index.css" rel="stylesheet">
+</head>
+<style>
+    .avatar-uploader .el-upload {
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    .avatar-uploader .el-upload:hover {
+        border-color: #409EFF;
+    }
+    .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 178px;
+        height: 178px;
+        line-height: 178px;
+        text-align: center;
+    }
+    .avatar {
+        width: 178px;
+        height: 178px;
+        display: block;
+    }
+</style>
+<body>
+<div id="app">
+    <el-upload :accept="acceptFile.img"
+               :auto-upload="false"
+               :before-upload="uploadImg"
+               :multiple="false"
+               :on-change="UserImg"
+               :on-success="handleAvatarSuccess" :show-file-list="false"
+               :with-credentials="true"
+               action="#"
+               class="avatar-uploader" name="file" slot="append">
+        <img :src="URL.imgUrl" alt="por" class="avatar" height="100" v-if="URL.imgUrl" width="100">
+        <i class="el-icon-plus avatar-uploader-icon" v-else></i>
+    </el-upload>
+    <el-form>
+        <el-date-picker class="el-date-picker"
+                        placeholder="选择生日"
+                        type="date"
+                        format="yyyy 年 MM 月 dd 日"
+                        value-format="yyyy-MM-dd"
+                        v-model="dateOfBirth">
+        </el-date-picker>
+        <button @click="aaa">aa</button>
+    </el-form>
+</div>
+</body>
+<script src="js/axios-0.18.0.js"></script>
+<script src="element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data(){
+            return{
+                dateOfBirth:'',
+                acceptFile: {
+                    img: 'image/gif,image/vnd.dwg,image/vnd.dxf,image/jp2,image/jpeg,image/png,image/tiff',
+                    imgType: '',
+                },
+                URL: {
+                    imgUrl: ''
+                },
+            }
+        },
+        methods:{
+            UserImg(file, fileList) {
+                let formData = new FormData();
+                formData.append('file', file.raw);
+                axios({
+                    method: "POST",
+                    url: 'http://localhost:80/Demo3/uploadServlet',
+                    data: formData
+                }).then(function (resp) {
+                    if (resp.data === "YES") {
+                        alert("头像修改成功")
+                    } else {
+                        alert("头像修改失败")
+                    }
+                })
+            },
+            uploadImg(file) {
+                let ImgType = ['image/gif', 'image/vnd.dwg', 'image/vnd.dxf', 'image/jp2', 'image/jpeg', 'image/png', 'image/tiff'];
+                if (ImgType.indexOf(this.imgType) === -1) {
+                    this.$message({
+                        showClose: true,
+                        message: "只能上传图片,请重新上传！",
+                        type: 'error',
+                    })
+                    return false;
+                }
+                return true;
+            },
+            handleAvatarSuccess(res, file) {
+                this.imgType = URL.createObjectURL(file.raw);
+            },
+            aaa(){
+                alert(this.dateOfBirth)
+            }
+        }
+        })
+</script>
+</html>

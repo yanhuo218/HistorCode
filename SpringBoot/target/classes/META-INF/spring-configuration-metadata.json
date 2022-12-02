@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "user",
+      "type": "com.yanhuo.domain.User",
+      "sourceType": "com.yanhuo.domain.User"
+    }
+  ],
+  "properties": [
+    {
+      "name": "user.id",
+      "type": "java.lang.Integer",
+      "sourceType": "com.yanhuo.domain.User"
+    },
+    {
+      "name": "user.password",
+      "type": "java.lang.String",
+      "sourceType": "com.yanhuo.domain.User"
+    },
+    {
+      "name": "user.username",
+      "type": "java.lang.String",
+      "sourceType": "com.yanhuo.domain.User"
+    }
+  ],
+  "hints": []
+}

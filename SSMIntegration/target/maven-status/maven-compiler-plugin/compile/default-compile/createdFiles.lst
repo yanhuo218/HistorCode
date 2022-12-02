@@ -1,0 +1,5 @@
+com\SpringDemo\config\MybatisConfig.class
+com\SpringDemo\config\JdbcConfig.class
+com\SpringDemo\config\SpringConfig.class
+com\SpringDemo\config\SpringMvcConfig.class
+com\SpringDemo\config\ServletConfig.class
